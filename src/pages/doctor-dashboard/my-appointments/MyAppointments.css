@@ -1,0 +1,244 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+}
+
+.appointments-container {
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  color: #1e88e5;
+  margin-bottom: 0.5rem;
+}
+
+.slogan, .slogan-secondary {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 0.3rem 0;
+}
+
+.appointments-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.no-appointments {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #999;
+  margin-top: 2rem;
+}
+
+/* Scroll horizontally full width */
+.appointments-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  gap: 1rem;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+}
+
+.appointment-card {
+  min-width: 250px;
+  max-width: 250px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.appointment-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.appointment-details h3 {
+  color: #1565c0;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.appointment-details p,
+.appointment-meta p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.status {
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-transform: capitalize;
+  display: inline-block;
+  margin-top: 0.4rem;
+}
+
+.status.confirmed {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.status.pending {
+  background-color: #fff9c4;
+  color: #fbc02d;
+}
+
+.status.cancelled {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+
+.appointments-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.appointments-scroll::-webkit-scrollbar-thumb {
+  background: #90caf9;
+  border-radius: 5px;
+}
+
+/* New Zoom-in animation */
+.zoom-in {
+  animation: zoomIn 0.4s ease-in-out both;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.cancel-btn {
+  margin-top: 0.8rem;
+  background-color: #ef5350;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.cancel-btn:hover {
+  background-color: #d32f2f;
+}
+.card-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+
+.options-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.options-icon:hover {
+  color: #000;
+}
+.card-header {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.options-icon {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s;
+  padding: 5px;
+}
+
+.options-icon:hover {
+  color: #000;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  z-index: 10;
+  min-width: 100px;
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-item.delete {
+  color: red;
+}
+
+.confirm-box {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.confirm-btn {
+  background-color: #d9534f;
+  color: white;
+  padding: 6px 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

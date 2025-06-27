@@ -1,0 +1,77 @@
+/* App.css */
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: linear-gradient(to right, #e6f7ff, #f0f9ff);
+  min-height: 100vh;
+
+
+  /* padding: 50px; */
+  /* gap: 50px; */
+}
+
+.main{
+    margin-top: 110px;
+    display: flex;
+   justify-content: space-between;
+   gap: 10px;
+   height: 500px;
+   width: 1000px;
+   background-color: #b9d8eb;
+   border-radius: 20px;
+    
+}
+
+.info-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+    padding-left: 100px;
+  text-align: left;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  color: #0077b6;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.app-title span {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 400;
+color: #0077b6;
+  margin-top: 10px;
+}
+
+.auth-toggle-buttons {
+  margin-top: 20px;
+}
+
+.auth-toggle-buttons button {
+  padding: 10px 25px;
+  font-size: 1rem;
+  background-color: #0099ff;
+  border: none;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-toggle-buttons button:hover {
+  background-color: #007acc;
+}
+
+.form-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 100px;
+}
