@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./DoctorHome.css";
 import { jwtDecode } from "jwt-decode"; // ✅ correct import
+import BASE_URL from "../../../api/apiConfig";
 
 const DoctorHome = () => {
   const [appointments, setAppointments] = useState([]);
@@ -26,7 +27,7 @@ const DoctorHome = () => {
     const fetchAppointments = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/appointments/doctor/${doctorId}`,
+          `${BASE_URL}/api/appointments/doctor/${doctorId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -43,7 +44,7 @@ const DoctorHome = () => {
   const updateStatus = async (appointmentId, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/appointments/appointments/${doctorId}/${appointmentId}/status`,
+        `${BASE_URL}/api/appointments/appointments/${doctorId}/${appointmentId}/status`,
         { status },
         {
           headers: {
@@ -66,7 +67,7 @@ const DoctorHome = () => {
   const deleteAppointment = async (appointmentId) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/appointments/appointments/${doctorId}/${appointmentId}`, // Adjust URL if needed
+        `${BASE_URL}/api/appointments/appointments/${doctorId}/${appointmentId}`, // Adjust URL if needed
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -86,7 +87,7 @@ const DoctorHome = () => {
     e.preventDefault();
     try {
       await axios.post(
-        "http://localhost:5000/api/availability",
+        `${BASE_URL}/api/availability`,
         { doctor_id: doctorId, ...slotData },
         {
           headers: {
@@ -215,31 +216,30 @@ const DoctorHome = () => {
                 </span>
               </div>
 
-          <div className="action-buttons">
-  {appt.status.toLowerCase() === "pending" && (
-    <>
-      <button
-        className="approve-btn"
-        onClick={() => updateStatus(appt.id, "confirmed")}
-      >
-        Approve
-      </button>
-      <button
-        className="cancel-btn"
-        onClick={() => updateStatus(appt.id, "cancelled")}
-      >
-        Cancel
-      </button>
-    </>
-  )}
-  <button
-    className="done-btn"
-    onClick={() => deleteAppointment(appt.id)}
-  >
-    Done
-  </button>
-</div>
-
+              <div className="action-buttons">
+                {appt.status.toLowerCase() === "pending" && (
+                  <>
+                    <button
+                      className="approve-btn"
+                      onClick={() => updateStatus(appt.id, "confirmed")}
+                    >
+                      Approve
+                    </button>
+                    <button
+                      className="cancel-btn"
+                      onClick={() => updateStatus(appt.id, "cancelled")}
+                    >
+                      Cancel
+                    </button>
+                  </>
+                )}
+                <button
+                  className="done-btn"
+                  onClick={() => deleteAppointment(appt.id)}
+                >
+                  Done
+                </button>
+              </div>
             </div>
           ))
         )}

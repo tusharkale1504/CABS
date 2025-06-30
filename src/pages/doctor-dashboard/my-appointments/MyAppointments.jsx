@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./MyAppointments.css";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import BASE_URL from "../../../api/apiConfig";
 
 const MyAppointments = () => {
   const [appointments, setAppointments] = useState([]);
@@ -15,7 +16,7 @@ const MyAppointments = () => {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/appointments/appointments/${userId}`,
+        `${BASE_URL}/api/appointments/appointments/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -47,7 +48,7 @@ const MyAppointments = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/appointments/appointments/${doctorId}/${appointmentId}/status`,
+        `${BASE_URL}/api/appointments/appointments/${doctorId}/${appointmentId}/status`,
         { status: "cancelled" },
         {
           headers: {
@@ -74,7 +75,7 @@ const MyAppointments = () => {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/appointments/appointments/${doctorId}/${appointmentId}`,
+        `${BASE_URL}/api/appointments/appointments/${doctorId}/${appointmentId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -98,8 +99,8 @@ const MyAppointments = () => {
           Stay on Track with Your Health – Your Appointments, Simplified!
         </p>
         <p className="slogan-secondary">
-          Managing your appointments is now easier than ever – Scroll, View,
-          and Stay Updated!
+          Managing your appointments is now easier than ever – Scroll, View, and
+          Stay Updated!
         </p>
       </header>
 
@@ -116,7 +117,9 @@ const MyAppointments = () => {
                   <BsThreeDotsVertical
                     className="options-icon"
                     onClick={() =>
-                      setOpenDropdownId(openDropdownId === appt.id ? null : appt.id)
+                      setOpenDropdownId(
+                        openDropdownId === appt.id ? null : appt.id
+                      )
                     }
                   />
                   {openDropdownId === appt.id && (

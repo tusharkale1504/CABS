@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Register.css';
+import BASE_URL from '../../api/apiConfig';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/register', {
+      const res = await fetch(`${BASE_URL}/api/users/register`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

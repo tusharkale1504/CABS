@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./patientHome.css";
+import "./PatientHome.css";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../../api/apiConfig";
 
 const PatientHome = () => {
   const [specializations, setSpecializations] = useState([]);
@@ -19,17 +20,19 @@ const PatientHome = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/users/doctors").then((res) => {
+    axios.get(`${BASE_URL}/api/users/doctors`).then((res) => {
       setDoctors(res.data);
       const specs = [...new Set(res.data.map((doc) => doc.specialization))];
       setSpecializations(specs);
     });
   }, []);
 
+  // (`${BASE_URL}/api/users/register`)
+
   useEffect(() => {
     if (selectedDoctorId) {
       axios
-        .get(`http://localhost:5000/api/slots/${selectedDoctorId}`)
+        .get(`${BASE_URL}/api/slots/${selectedDoctorId}`)
         .then((res) => setSlots(res.data));
     }
   }, [selectedDoctorId]);
@@ -39,7 +42,7 @@ const PatientHome = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        "http://localhost:5000/api/appointments/appointments",
+        `${BASE_URL}/api/appointments/appointments`,
         {
           ...appointment,
           doctor_id: selectedDoctorId,

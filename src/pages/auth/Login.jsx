@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './login.css';
+import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode'; // ✅ Correct named import
+import BASE_URL from '../../api/apiConfig';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch(`${BASE_URL}/api/users/login`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
