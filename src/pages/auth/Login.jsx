@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Login.css';
+import './login.css';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode'; // ✅ Correct named import
 import BASE_URL from '../../api/apiConfig';
